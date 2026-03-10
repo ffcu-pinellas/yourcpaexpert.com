@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class LeadController extends Controller
 {
+    public function index()
+    {
+        $leads = Lead::latest()->paginate(20);
+        return view('admin.leads.index', compact('leads'));
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

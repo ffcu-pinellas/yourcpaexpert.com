@@ -51,6 +51,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('team', TeamMemberController::class);
         Route::resource('cases', \App\Http\Controllers\Admin\JobCaseController::class);
         Route::resource('payments', \App\Http\Controllers\Admin\PaymentMethodController::class);
+        Route::get('/leads', [LeadController::class, 'index'])->name('leads.index');
         Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
         Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
     });

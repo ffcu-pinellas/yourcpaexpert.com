@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{ $meta_title ?? 'Your CPA Expert - Professional Legal & Tax Advisory' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="{{ $meta_description ?? 'Expert tax planning, real estate law, and estate planning services.' }}">
+    
+    <link rel="icon" type="image/png" href="https://www.findlaw.com/static/c/images/image/upload/v1751527194/favicon/favicon-96x96.png" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <style>
-        :root {
-            --primary-color: {{ $siteSettings['primary_color'] ?? '#0d47a1' }};
-            --secondary-color: {{ $siteSettings['secondary_color'] ?? '#1565c0' }};
-            --accent-color: {{ $siteSettings['accent_color'] ?? '#f57c00' }};
-        }
-    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
+    <style>
+        :root {
+            --fl-primary: {{ $siteSettings['primary_color'] ?? '#FA6400' }};
+        }
+    </style>
+
     @if(isset($siteSettings['chat_site_id']))
-    <!--Start of Tawk.to Script-->
+    <!--Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
@@ -32,88 +34,89 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
-    <!--End of Tawk.to Script-->
     @endif
-
-    <!-- Schema.org markup for Google -->
-    <script type="application/ld+json">
-    {
-      "@@context": "https://schema.org",
-      "@@type": "LocalBusiness",
-      "name": "Your CPA Expert",
-      "image": "{{ asset('images/logo.png') }}",
-      "@@id": "https://yourcpaexpert.com",
-      "url": "https://yourcpaexpert.com",
-      "telephone": "+1000000000",
-      "address": {
-        "@@type": "PostalAddress",
-        "streetAddress": "Main St",
-        "addressLocality": "Your City",
-        "postalCode": "00000",
-        "addressCountry": "US"
-      }
-    }
-    </script>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen">
-    <!-- Accessibility: Skip to Content Link -->
-    <a href="#main-content" class="skip-link" style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;">Skip to main content</a>
 
-    <header role="banner">
-        <div class="container py-4 flex justify-between items-center bg-white shadow-sm px-6">
-            <a href="/" class="text-2xl font-bold flex items-center" aria-label="Go to Homepage">
-                <img src="{{ $siteSettings['logo'] ?? asset('logo.png') }}" alt="{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }} Logo" class="h-12 mr-3">
-                <span class="hidden md:inline">{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}</span>
-            </a>
-            
-            <nav role="navigation" aria-label="Main Navigation">
-                <ul class="flex space-x-8 text-sm font-semibold text-gray-700">
-                    <li><a href="/services" class="hover:text-blue-800 transition">Practice Areas</a></li>
-                    <li><a href="/about" class="hover:text-blue-800 transition">About Us</a></li>
-                    <li><a href="/blog" class="hover:text-blue-800 transition">Insights</a></li>
-                    @guest
-                        <li><a href="/login" class="px-5 py-2.5 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition shadow-md">Portal Login</a></li>
-                    @else
-                        <li><a href="/dashboard" class="px-5 py-2.5 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition shadow-md">My Dashboard</a></li>
-                    @endguest
+<body class="page">
+
+<header class="fl-header">
+    <div class="fl-header-bar">
+        <a class="fl-header-bar__logo-box" href="/" aria-label="Home">
+            <img src="{{ $siteSettings['logo'] ?? asset('logo.png') }}" alt="{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}" style="height: 50px;">
+        </a>
+        
+        <nav class="fl-header-menu__nav">
+            <ul class="fl-header-menu__nav-list">
+                <li class="fl-header-menu__nav-list-item">
+                    <a class="fl-header-menu__nav-list-item-head" href="/services">Practice Areas <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                </li>
+                <li class="fl-header-menu__nav-list-item">
+                    <a class="fl-header-menu__nav-list-item-head" href="/about">About Us</a>
+                </li>
+                <li class="fl-header-menu__nav-list-item">
+                    <a class="fl-header-menu__nav-list-item-head" href="/blog">Insights</a>
+                </li>
+                <li class="fl-header-menu__nav-list-item">
+                    <a class="fl-header-menu__nav-list-item-head" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="fl-header-actions" style="display: flex; align-items: center; gap: 20px;">
+            <a href="/search" class="fl-header-search-btn" aria-label="Search"><i class="fa fa-search" aria-hidden="true"></i></a>
+            @guest
+                <a href="/login" class="fl-button primary" style="background: var(--fl-primary); color: white; padding: 10px 20px; border-radius: 4px; font-weight: 700;">Portal Login</a>
+            @else
+                <a href="/dashboard" class="fl-button primary" style="background: var(--fl-primary); color: white; padding: 10px 20px; border-radius: 4px; font-weight: 700;">Dashboard</a>
+            @endguest
+        </div>
+    </div>
+</header>
+
+<main id="main-content">
+    @yield('content')
+</main>
+
+<footer class="fl-footer" style="background: var(--fl-navy); color: white; padding: 80px 0 40px; margin-top: 80px;">
+    <div class="fl-container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+            <div>
+                <img src="{{ $siteSettings['logo'] ?? asset('logo_white.png') }}" alt="Logo" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);">
+                <p style="opacity: 0.7; line-height: 1.8;">{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }} provides world-class legal and tax advisory services for individuals and businesses.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Our Services</h4>
+                <ul style="list-style: none; opacity: 0.7; line-height: 2.5;">
+                    <li><a href="/services/tax">Tax Planning & Litigation</a></li>
+                    <li><a href="/services/real-estate">Real Estate Acquisition</a></li>
+                    <li><a href="/services/estate">Estate & Trust Management</a></li>
+                    <li><a href="/services/audit">Internal Audit & Compliance</a></li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main id="main-content" role="main" class="flex-grow">
-        @yield('content')
-    </main>
-
-    <footer role="contentinfo" class="bg-gray-900 text-white pt-20 pb-10 mt-auto">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>About Us</h4>
-                    <p>Professional tax, legal, and estate planning advice for high-net-worth individuals and business owners.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <a href="/about">Our Team</a>
-                    <a href="/blog">Latest News</a>
-                    <a href="/contact">Book Consultation</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <a href="/services/tax-planning">Tax Planning</a>
-                    <a href="/services/real-estate">Real Estate Law</a>
-                    <a href="/services/estate-planning">Estate Planning</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p><i class="fas fa-phone"></i> +1 (000) 000-0000</p>
-                    <p><i class="fas fa-envelope"></i> contact@yourcpaexpert.com</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Quick Links</h4>
+                <ul style="list-style: none; opacity: 0.7; line-height: 2.5;">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/accessibility">Accessibility</a></li>
+                    <li><a href="/contact">Book a Consultation</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Connect With Us</h4>
+                <div style="display: flex; gap: 20px; font-size: 1.5rem; margin-top: 10px;">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.8rem;">
-                &copy; {{ date('Y') }} Your CPA Expert. All Rights Reserved.
-            </div>
         </div>
-    </footer>
+        <div style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.5; font-size: 0.85rem;">
+            &copy; {{ date('Y') }} {{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

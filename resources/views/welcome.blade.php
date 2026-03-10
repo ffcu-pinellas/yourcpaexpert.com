@@ -1,54 +1,82 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="hero">
-    <div class="container" style="max-width: 900px;">
-        <h1>Professional Legal & Tax Advisory</h1>
-        <p>Expert guidance in Tax Planning, Real Estate Acquisitions, and Estate Planning for high-net-worth individuals and business owners.</p>
-        <div class="hero-actions">
-            <a href="/contact" class="btn btn-primary">Book a Free Consultation</a>
-            <a href="/services" class="btn" style="color: white; border: 1px solid white; margin-left: 15px;">View Our Services</a>
-        </div>
-        <div class="affiliations" style="margin-top: 50px; opacity: 0.7; font-size: 0.9rem;">
-            <span>Members of: ABA | AICPA | State Bar Association</span>
-        </div>
-    </div>
-</section>
-
-<section class="services">
-    <div class="container">
-        <div class="section-title">
-            <h2>Our Core Expertise</h2>
-            <p>Tailored solutions for complex legal and financial needs.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-calculator fa-3x" style="color: var(--primary-color); margin-bottom: 20px;"></i>
-                <h3>Tax Planning</h3>
-                <p>Strategic tax reduction strategies for individuals and businesses to maximize wealth retention.</p>
-                <a href="/services/tax-planning" style="margin-top: 15px; display: inline-block;">Learn More &rarr;</a>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-building fa-3x" style="color: var(--primary-color); margin-bottom: 20px;"></i>
-                <h3>Real Estate Law</h3>
-                <p>Expert legal counsel for commercial and residential closings, 1031 exchanges, and litigation.</p>
-                <a href="/services/real-estate" style="margin-top: 15px; display: inline-block;">Learn More &rarr;</a>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-file-signature fa-3x" style="color: var(--primary-color); margin-bottom: 20px;"></i>
-                <h3>Estate Planning</h3>
-                <p>Secure your legacy with comprehensive wills, trusts, and probate administration services.</p>
-                <a href="/services/estate-planning" style="margin-top: 15px; display: inline-block;">Learn More &rarr;</a>
-            </div>
+<!-- FindLaw Banner / Hero -->
+<section class="fl-banner" style="background-image: url('https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177840/ability-law/wp-prod/www-Group-162-1-2/www-Group-162-1-2.jpg?_i=AA');">
+    <div class="fl-banner__content">
+        <h1 class="fl-banner__text-main">Legal Solutions Start Here</h1>
+        <span class="fl-banner__text-secondary">FindLaw is the number one source of free legal information and resources on the web.</span>
+        <div class="fl-banner__search">
+            <input type="text" placeholder="Legal Issue (e.g. Divorce, DUI, Personal Injury)">
+            <input type="text" placeholder="City, State or Zip">
+            <button type="button">Find a Lawyer <i class="fa fa-angle-right"></i></button>
         </div>
     </div>
 </section>
 
-<section style="padding: 100px 0; background-color: var(--primary-color); color: white; text-align: center;">
-    <div class="container">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Need Help Navigating Complex Laws?</h2>
-        <p style="font-size: 1.25rem; margin-bottom: 40px; opacity: 0.9;">Our partners are ready to guide you through every step of your legal or tax journey.</p>
-        <a href="/contact" class="btn btn-primary" style="background-color: white; color: var(--primary-color);">Schedule Your Call Today</a>
+<!-- FindLaw Stats Bar -->
+<section class="fl-stats">
+    <ul class="fl-stats-cards-container">
+        <li class="fl-stats-card">
+            <span class="fl-stats-card-value">#1</span>
+            <span class="fl-stats-card-description">Most visited legal website</span>
+        </li>
+        <li class="fl-stats-card">
+            <span class="fl-stats-card-value">35k+</span>
+            <span class="fl-stats-card-description">Expert articles reviewed</span>
+        </li>
+        <li class="fl-stats-card">
+            <span class="fl-stats-card-value">1.2m</span>
+            <span class="fl-stats-card-description">Law firms in directory</span>
+        </li>
+        <li class="fl-stats-card">
+            <span class="fl-stats-card-value">100%</span>
+            <span class="fl-stats-card-description">Free access to laws</span>
+        </li>
+    </ul>
+</section>
+
+<!-- Legal Topics / Issues Grid -->
+<div class="topic-box-section">
+    <div class="fl-container fl-section-title">
+        <h2 class="fl-title-H2">Explore Legal Issues</h2>
+        <p>Whether you are facing a legal issue or want to learn about a specific legal subject, browsing FindLaw’s legal topics is the perfect starting point.</p>
+    </div>
+    
+    <div class="topic-box-section-content__items">
+        <a href="/services/tax" class="fl-topic-box-item">
+            <img src="https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177791/ability-law/wp-prod/www-topic-box-user-pilot/www-topic-box-user-pilot.png" class="fl-topic-box-item-icon" alt="Tax Law">
+            <span class="fl-topic-box-item-text">Tax Law & Litigation</span>
+        </a>
+        <a href="/services/real-estate" class="fl-topic-box-item">
+            <img src="https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177820/ability-law/wp-prod/www-topic-box-house-building/www-topic-box-house-building.png" class="fl-topic-box-item-icon" alt="Real Estate">
+            <span class="fl-topic-box-item-text">Real Estate Acquisition</span>
+        </a>
+        <a href="/services/family" class="fl-topic-box-item">
+            <img src="https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177811/ability-law/wp-prod/www-topic-box-family/www-topic-box-family.png" class="fl-topic-box-item-icon" alt="Family Law">
+            <span class="fl-topic-box-item-text">Family & Estate Law</span>
+        </a>
+        <a href="/services/business" class="fl-topic-box-item">
+            <img src="https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177800/ability-law/wp-prod/www-topic-box-briefcase/www-topic-box-briefcase.png" class="fl-topic-box-item-icon" alt="Business Law">
+            <span class="fl-topic-box-item-text">Business Formation</span>
+        </a>
+        <a href="/services/estate" class="fl-topic-box-item">
+            <img src="https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177828/ability-law/wp-prod/www-topic-box-estate/www-topic-box-estate.png" class="fl-topic-box-item-icon" alt="Estate Planning">
+            <span class="fl-topic-box-item-text">Estate Planning</span>
+        </a>
+        <a href="/services/litigation" class="fl-topic-box-item">
+            <img src="https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177785/ability-law/wp-prod/www-topic-box-truck-medical/www-topic-box-truck-medical.png" class="fl-topic-box-item-icon" alt="Personal Injury">
+            <span class="fl-topic-box-item-text">Personal Injury</span>
+        </a>
+    </div>
+</div>
+
+<!-- Professional Call to Action -->
+<section style="padding: 100px 0; background-color: var(--fl-navy); color: white; text-align: center;">
+    <div class="fl-container">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Need Professional Guidance?</h2>
+        <p style="font-size: 1.25rem; margin-bottom: 40px; opacity: 0.8;">Our experts are standing by to help you navigate your legal and tax challenges.</p>
+        <a href="/contact" class="fl-button primary" style="background: var(--fl-primary); color: white; padding: 15px 40px; font-size: 1.1rem; border-radius: 4px; font-weight: 700;">Schedule Your Strategy Session</a>
     </div>
 </section>
 @endsection
