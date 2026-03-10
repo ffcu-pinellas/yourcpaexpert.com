@@ -49,7 +49,8 @@ I have provided a `push.ps1` script in the root directory to automate this.
 ### Step 3: Configure Environment
 1. In hPanel, go to **Files > File Manager**.
 2. Create or edit the `.env` file in your root directory.
-3. Set your **MySQL** credentials (Hostinger provides these in the "Databases" section):
+3. **CRITICAL**: Set `SESSION_DRIVER=file` and `CACHE_STORE=file` for the initial setup.
+4. Set your **MySQL** credentials:
    ```env
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
