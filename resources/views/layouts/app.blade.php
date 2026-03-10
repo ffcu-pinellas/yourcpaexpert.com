@@ -43,22 +43,23 @@
     <div class="fl-header" data-activity-map="main-nav">
         <a class="link-skip-nav" href="#main-content">Skip to main content</a>
         <div class="fl-header-bar">
-            <button class="fl-header-bar__menu-button" type="button" aria-label="Menu">
+            <button class="fl-header-bar__menu-button" type="button" aria-label="Menu" id="mobile-menu-toggle">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
             <a class="fl-header-bar__logo-box" href="/" aria-label="Firm logo">
                 @if(isset($siteSettings['logo_url']))
                     <img src="{{ $siteSettings['logo_url'] }}" alt="{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}" style="height: 45px; width: auto;">
                 @else
-                    <span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 24px; color: #002D5B; letter-spacing: -1px;">
+                    <span style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 24px; color: #FFFFFF; letter-spacing: -1px;">
                         {{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}<span style="color: #FA6400;">.</span>
                     </span>
                 @endif
             </a>
-            <nav class="fl-header-nav">
+            <nav class="fl-header-nav" id="fl-header-nav">
                 <ul class="fl-header-nav-list">
-                    <li><a href="/services">Learn About the Law</a></li>
-                    <li><a href="/team">Legal Professionals</a></li>
+                    <li><a href="/services">Practice Areas</a></li>
+                    <li><a href="/team">Our Experts</a></li>
+                    <li><a href="/contact">Contact</a></li>
                     @guest
                         <li><a href="{{ route('login') }}" class="fl-button primary">Client Portal</a></li>
                     @else
@@ -66,7 +67,7 @@
                         <li>
                             <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                                 @csrf
-                                <button type="submit" class="fl-link-button" style="color: white; border: none; background: none; cursor: pointer; padding: 10px 15px;">Logout</button>
+                                <button type="submit" class="fl-header-logout">Logout <i class="fas fa-sign-out-alt"></i></button>
                             </form>
                         </li>
                     @endguest
@@ -117,6 +118,11 @@
     </div>
 </footer>
 
+<script>
+document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+    document.getElementById('fl-header-nav').classList.toggle('active');
+});
+</script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

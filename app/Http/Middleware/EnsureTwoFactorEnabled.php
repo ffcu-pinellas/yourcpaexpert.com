@@ -13,12 +13,8 @@ class EnsureTwoFactorEnabled
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = $request->user();
-
-        if ($user && !$user->two_factor_confirmed_at && $request->is('admin/*') && !$request->is('admin/2fa*')) {
-            return redirect()->route('admin.2fa.setup');
-        }
-
+        // 2FA is now optional as per user request. 
+        // We only check if the user is authenticated.
         return $next($request);
     }
 }

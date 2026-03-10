@@ -150,14 +150,34 @@ class FindLawSeeder extends Seeder
                 'meta_description' => 'Professional ' . $mp['title'] . ' guidance.',
             ]);
             
+            // Hero Block
             Block::updateOrCreate(['page_id' => $p->id, 'type' => 'hero'], [
-                'content' => ['title' => $p->title, 'subtitle' => 'Expert advice for your ' . strtolower($p->title) . ' needs.'],
+                'content' => [
+                    'title' => $p->title, 
+                    'subtitle' => 'Expert advice for your ' . strtolower($p->title) . ' needs.',
+                    'button_text' => 'Get a Free Consultation',
+                    'button_link' => '/contact'
+                ],
                 'order_column' => 1
             ]);
 
+            // Text Block
             Block::updateOrCreate(['page_id' => $p->id, 'type' => 'text'], [
-                'content' => ['body' => '<p>Our experts provide specialized support for ' . strtolower($mp['title']) . ', ensuring compliance and strategic growth.</p>'],
+                'content' => [
+                    'body' => '<h2>Specialized ' . $mp['title'] . ' Solutions</h2><p>Our team of JD and CPA professionals provides comprehensive support for ' . strtolower($mp['title']) . ', ensuring both legal compliance and tax efficiency.</p><p>We specialize in high-stakes situations requiring extreme attention to detail and professional discretion.</p><ul><li>Strategic Advisory</li><li>Risk Mitigation</li><li>Executive Representation</li></ul>'
+                ],
                 'order_column' => 2
+            ]);
+
+            // CTA Block
+            Block::updateOrCreate(['page_id' => $p->id, 'type' => 'cta'], [
+                'content' => [
+                    'title' => 'Secure Your ' . $mp['title'] . ' Strategy',
+                    'text' => 'Consult with our senior partners to design a robust legal framework.',
+                    'btn_text' => 'Speak with an Expert',
+                    'btn_link' => '/contact'
+                ],
+                'order_column' => 3
             ]);
         }
 
