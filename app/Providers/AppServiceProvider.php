@@ -19,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        try {
+            $settings = \App\Models\SiteSetting::all()->pluck('value', 'key')->toArray();
+            view()->share('siteSettings', $settings);
+        } catch (\Exception $e) {
+            view()->share('siteSettings', []);
+        }
     }
 }

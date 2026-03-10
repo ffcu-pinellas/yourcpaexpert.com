@@ -65,6 +65,7 @@ class FindLawSeeder extends Seeder
                 'is_published' => true,
                 'meta_title' => 'Expert Tax Planning & Litigation Services | Your CPA Expert',
                 'meta_description' => 'Navigate complex tax laws with our expert JD/CPA team.',
+                'content' => 'Our tax division provides world-class litigation support and strategic planning for high-net-worth individuals and corporate entities.'
             ],
             [
                 'title' => 'Real Estate Acquisition',
@@ -72,17 +73,15 @@ class FindLawSeeder extends Seeder
                 'is_published' => true,
                 'meta_title' => 'Strategic Real Estate Legal Counsel',
                 'meta_description' => 'From commercial closings to 1031 exchanges, we protect your property interests.',
+                'content' => 'We provide comprehensive legal support for commercial and residential real estate transactions, including complex asset swaps.'
             ],
         ];
 
         foreach ($pages as $p) {
             $page = Page::updateOrCreate(['slug' => $p['slug']], $p);
             
-            // Add a hero block
-            Block::updateOrCreate([
-                'page_id' => $page->id,
-                'type' => 'hero',
-            ], [
+            // Hero Block
+            Block::updateOrCreate(['page_id' => $page->id, 'type' => 'hero'], [
                 'content' => [
                     'title' => $p['title'],
                     'subtitle' => 'Professional guidance for complex legal challenges.',
@@ -90,6 +89,25 @@ class FindLawSeeder extends Seeder
                     'button_link' => '/contact'
                 ],
                 'order_column' => 1
+            ]);
+
+            // Text Block
+            Block::updateOrCreate(['page_id' => $page->id, 'type' => 'text'], [
+                'content' => [
+                    'body' => '<h2>Why Choose Our ' . $p['title'] . ' Experts?</h2><p>' . $p['content'] . ' our team combines legal expertise with certified accounting precision to deliver unmatched results.</p><ul><li>Strategic Risk Assessment</li><li>International Compliance</li><li>High-Stakes Representation</li></ul>'
+                ],
+                'order_column' => 2
+            ]);
+
+            // CTA Block
+            Block::updateOrCreate(['page_id' => $page->id, 'type' => 'cta'], [
+                'content' => [
+                    'title' => 'Ready to Secure Your Future?',
+                    'text' => 'Speak with a senior partner today regarding your ' . strtolower($p['title']) . ' requirements.',
+                    'btn_text' => 'Schedule Consultation',
+                    'btn_link' => '/contact'
+                ],
+                'order_column' => 3
             ]);
         }
         // 4. Sample Leads
@@ -135,6 +153,11 @@ class FindLawSeeder extends Seeder
             Block::updateOrCreate(['page_id' => $p->id, 'type' => 'hero'], [
                 'content' => ['title' => $p->title, 'subtitle' => 'Expert advice for your ' . strtolower($p->title) . ' needs.'],
                 'order_column' => 1
+            ]);
+
+            Block::updateOrCreate(['page_id' => $p->id, 'type' => 'text'], [
+                'content' => ['body' => '<p>Our experts provide specialized support for ' . strtolower($mp['title']) . ', ensuring compliance and strategic growth.</p>'],
+                'order_column' => 2
             ]);
         }
 

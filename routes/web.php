@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\TeamMemberController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\Admin\TwoFactorController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
@@ -32,7 +33,9 @@ Route::get('/about', function () {
     return view('about'); // To be implemented
 });
 
-Route::get('/contact', [ServicesController::class, 'wizard'])->name('contact'); // Use wizard for contact
+Route::get('/contact', function() {
+    return view('contact');
+})->name('contact');
 
 Route::post('/leads', [LeadController::class, 'store'])->name('leads.store');
 
