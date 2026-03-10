@@ -1,98 +1,93 @@
 @extends('layouts.app')
 
+@extends('layouts.app')
+
 @section('content')
-<!-- FindLaw Ultra-High Fidelity Homepage -->
-
-<!-- Hero Banner Section -->
-<section class="fl-banner">
-    <div class="fl-container">
-        <div class="fl-banner-content">
-            <h1 class="fl-banner-title">Find the Right Legal & Tax Advisor</h1>
-            <p class="fl-banner-subtitle">World-class guidance for Tax Litigation, Estate Planning, and Corporate Audit.</p>
-            
-            <!-- Exact FindLaw Search Card -->
-            <div class="fl-search-card">
-                <div class="fl-search-header">
-                    <span class="fl-search-label">I want to...</span>
-                </div>
-                <div class="fl-search-inputs">
-                    <div class="fl-input-group">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Topic: Tax, Audit, Property..." class="fl-input">
+<main id="main-content" class="ability-corporate flw-general-main-content">
+    <div class="root">
+        <!-- Exact FindLaw Banner -->
+        <section class="fl-banner" style="--fl-homepage-banner-background-image-desktop: url(https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177840/ability-law/wp-prod/www-Group-162-1-2/www-Group-162-1-2.jpg?_i=AA);">
+            <div class="fl-banner__content">
+                <h1 class="fl-banner__text-main">Legal Solutions Start Here</h1>
+                <span class="fl-banner__text-secondary">
+                    <p>FindLaw is the number one source of free legal information and resources on the web.</p>
+                </span>
+                
+                <div class="fl-banner__search-card">
+                    <div class="fl-search-card-header">I want to...</div>
+                    <div class="fl-search-card-body">
+                        <div class="fl-input-wrapper">
+                            <i class="fa fa-search"></i>
+                            <input type="text" placeholder="Legal Issue or Topic" class="fl-input">
+                        </div>
+                        <div class="fl-input-wrapper">
+                            <i class="fa fa-location-arrow"></i>
+                            <input type="text" placeholder="Location" class="fl-input">
+                        </div>
+                        <button class="fl-button primary">Find a Lawyer <i class="fa fa-angle-right"></i></button>
                     </div>
-                    <div class="fl-input-group">
-                        <i class="fas fa-location-dot"></i>
-                        <input type="text" placeholder="Location: State or Zip" class="fl-input">
+                </div>
+            </div>
+        </section>
+
+        <!-- Exact FindLaw Stats -->
+        <section class="fl-stats fl-flex fl-items-center fl-justify-center fl-stats-horizontal">
+            <ul class="fl-stats-cards-container fl-no-margin">
+                <li class="fl-stats-cards-item">
+                    <div class="fl-stats-card">
+                        <span class="fl-stats-card-value">#1</span>
+                        <span class="fl-stats-card-description">most visited legal information website</span>
                     </div>
-                    <button class="fl-btn-search">Find My Advisor <i class="fas fa-angle-right"></i></button>
-                </div>
-                <div class="fl-search-footer">
-                    <a href="#" class="fl-link">Browse by Topic</a>
-                    <span class="fl-spacer">|</span>
-                    <a href="#" class="fl-link">View All States</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                </li>
+                <li class="fl-stats-cards-item">
+                    <div class="fl-stats-card">
+                        <span class="fl-stats-card-value">35k+</span>
+                        <span class="fl-stats-card-description">articles reviewed by legal professionals</span>
+                    </div>
+                </li>
+                <li class="fl-stats-cards-item">
+                    <div class="fl-stats-card">
+                        <span class="fl-stats-card-value">1.2m</span>
+                        <span class="fl-stats-card-description">law firms in our nationwide directory</span>
+                    </div>
+                </li>
+                <li class="fl-stats-cards-item">
+                    <div class="fl-stats-card">
+                        <span class="fl-stats-card-value">100%</span>
+                        <span class="fl-stats-card-description">free access to federal & state laws</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
-<!-- Stats High-Fidelity Bar -->
-<section class="fl-stats">
-    <div class="fl-container">
-        <div class="fl-stats-grid">
-            <div class="fl-stat-item">
-                <i class="fas fa-user-shield fl-stat-icon"></i>
-                <div class="fl-stat-text">Certified JD/CPA Experts</div>
+        <!-- Exact FindLaw Topics -->
+        <div class="topic-box-section">
+            <div class="fl-container fl-section-title fl-text-center">
+                <h2 class="fl-title-H2">Explore Legal Issues</h2>
+                <p>Whether you are facing a legal issue or want to learn about a specific legal subject, browsing FindLaw’s legal topics is the perfect starting point.</p>
             </div>
-            <div class="fl-stat-item">
-                <i class="fas fa-balance-scale fl-stat-icon"></i>
-                <div class="fl-stat-text">Top-Rated Advisory Firm</div>
-            </div>
-            <div class="fl-stat-item">
-                <i class="fas fa-lock fl-stat-icon"></i>
-                <div class="fl-stat-text">100% Secure Client Data</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Topics Grid Section -->
-<section class="fl-topics">
-    <div class="fl-container">
-        <h2 class="fl-section-title">Explore Professional Practice Areas</h2>
-        <div class="fl-topic-grid">
-            @php
-                $topics = [
-                    ['title' => 'Tax Planning & Litigation', 'icon' => 'fa-calculator', 'desc' => 'Navigate complex tax codes with JD/CPA support.', 'slug' => 'tax'],
-                    ['title' => 'Real Estate Acquisition', 'icon' => 'fa-building', 'desc' => 'Strategic counsel for commercial property projects.', 'slug' => 'real-estate'],
-                    ['title' => 'Estate Planning & Trust', 'icon' => 'fa-file-signature', 'desc' => 'Protect your assets and future legacy.', 'slug' => 'estate'],
-                    ['title' => 'Corporate Audit & Compliance', 'icon' => 'fa-chart-bar', 'desc' => 'Forensic accounting and internal audits.', 'slug' => 'audit'],
-                    ['title' => 'Business Law & Formation', 'icon' => 'fa-briefcase', 'desc' => 'Structure your LLC or Corporation correctly.', 'slug' => 'business'],
-                    ['title' => 'Asset Protection Strategy', 'icon' => 'fa-shield-alt', 'desc' => 'Defensive positioning for high-net-worth clients.', 'slug' => 'asset-protection'],
-                ];
-            @endphp
-
-            @foreach($topics as $topic)
-            <div class="fl-topic-box" onclick="window.location='{{ route('services.show', $topic['slug']) }}'">
-                <i class="fas {{ $topic['icon'] }} fl-topic-icon"></i>
-                <div class="fl-topic-content">
-                    <h3 class="fl-topic-title">{{ $topic['title'] }}</h3>
-                    <p class="fl-topic-desc">{{ $topic['desc'] }}</p>
-                    <a href="{{ route('services.show', $topic['slug']) }}" class="fl-topic-link">Learn More <i class="fas fa-chevron-right"></i></a>
+            <div class="fl-container">
+                <div class="topic-box-grid">
+                    @php
+                        $topics = [
+                            ['title' => 'Criminal Law', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177791/ability-law/wp-prod/www-topic-box-user-pilot/www-topic-box-user-pilot.png'],
+                            ['title' => 'Family Law', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177811/ability-law/wp-prod/www-topic-box-family/www-topic-box-family.png'],
+                            ['title' => 'Personal Injury', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177785/ability-law/wp-prod/www-topic-box-truck-medical/www-topic-box-truck-medical.png'],
+                            ['title' => 'Real Estate Law', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177820/ability-law/wp-prod/www-topic-box-house-building/www-topic-box-house-building.png'],
+                            ['title' => 'Employment Law', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177840/ability-law/wp-prod/www-Group-162-1-2/www-Group-162-1-2.jpg'],
+                            ['title' => 'Estate Planning', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177820/ability-law/wp-prod/www-topic-box-house-building/www-topic-box-house-building.png'],
+                        ];
+                    @endphp
+                    @foreach($topics as $topic)
+                    <a href="/services" class="fl-topic-box-item">
+                        <img src="{{ $topic['icon'] }}" class="fl-topic-box-item-icon" alt="{{ $topic['title'] }}">
+                        <span class="fl-topic-box-item-text">{{ $topic['title'] }}</span>
+                    </a>
+                    @endforeach
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
-</section>
-
-<section class="fl-cta">
-    <div class="fl-container">
-        <div class="fl-cta-card">
-            <h2>Ready to start your consultation?</h2>
-            <p>Speak with an expert advisor today about your specific tax or legal needs.</p>
-            <a href="{{ route('contact') }}" class="fl-btn-cta">Book Free Consultation</a>
-        </div>
-    </div>
-</section>
+</main>
+@endsection
 @endsection

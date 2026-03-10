@@ -13,6 +13,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication Routes
+Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
 Route::get('/privacy', function () {
     return view('privacy');
 })->name('privacy');
