@@ -14,17 +14,17 @@
                 
                 <div class="fl-banner__search-card">
                     <div class="fl-search-card-header">I want to...</div>
-                    <div class="fl-search-card-body">
+                    <form action="/services" method="GET" class="fl-search-card-body">
                         <div class="fl-input-wrapper">
                             <i class="fa fa-search"></i>
-                            <input type="text" placeholder="Legal Issue or Topic" class="fl-input">
+                            <input type="text" name="q" placeholder="Legal Issue or Topic" class="fl-input">
                         </div>
                         <div class="fl-input-wrapper">
                             <i class="fa fa-location-arrow"></i>
-                            <input type="text" placeholder="Location" class="fl-input">
+                            <input type="text" name="location" placeholder="Location" class="fl-input">
                         </div>
-                        <button class="fl-button primary">Find a Lawyer <i class="fa fa-angle-right"></i></button>
-                    </div>
+                        <button type="submit" class="fl-button primary">Find a Lawyer <i class="fa fa-angle-right"></i></button>
+                    </form>
                 </div>
             </div>
         </section>
