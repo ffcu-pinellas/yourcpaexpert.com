@@ -5,7 +5,7 @@
 <main id="main-content" class="ability-corporate flw-general-main-content">
     <div class="root">
         <!-- Exact FindLaw Banner -->
-        <section class="fl-banner" style="--fl-homepage-banner-background-image-desktop: url(https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177840/ability-law/wp-prod/www-Group-162-1-2/www-Group-162-1-2.jpg?_i=AA);">
+        <section class="fl-banner" style="--fl-homepage-banner-background-image-desktop: url({{ asset('images/findlaw_banner_hero.png') }});">
             <div class="fl-banner__content">
                 <h1 class="fl-banner__text-main">Legal Solutions Start Here</h1>
                 <span class="fl-banner__text-secondary">
@@ -73,7 +73,7 @@
                             ['title' => 'Family Law', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177811/ability-law/wp-prod/www-topic-box-family/www-topic-box-family.png'],
                             ['title' => 'Personal Injury', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177785/ability-law/wp-prod/www-topic-box-truck-medical/www-topic-box-truck-medical.png'],
                             ['title' => 'Real Estate Law', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177820/ability-law/wp-prod/www-topic-box-house-building/www-topic-box-house-building.png'],
-                            ['title' => 'Employment Law', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177840/ability-law/wp-prod/www-Group-162-1-2/www-Group-162-1-2.jpg'],
+                            ['title' => 'Employment Law', 'icon' => asset('images/employment_law_icon.png')],
                             ['title' => 'Estate Planning', 'icon' => 'https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177820/ability-law/wp-prod/www-topic-box-house-building/www-topic-box-house-building.png'],
                         ];
                     @endphp
