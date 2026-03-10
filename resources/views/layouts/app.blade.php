@@ -40,35 +40,39 @@
 <body class="page">
 
 <header class="fl-header">
-    <div class="fl-header-bar">
-        <a class="fl-header-bar__logo-box" href="/" aria-label="Home">
-            <img src="{{ $siteSettings['logo'] ?? asset('logo.png') }}" alt="{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}" style="height: 50px;">
-        </a>
-        
-        <nav class="fl-header-menu__nav">
-            <ul class="fl-header-menu__nav-list">
-                <li class="fl-header-menu__nav-list-item">
-                    <a class="fl-header-menu__nav-list-item-head" href="/services">Practice Areas <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                </li>
-                <li class="fl-header-menu__nav-list-item">
-                    <a class="fl-header-menu__nav-list-item-head" href="/about">About Us</a>
-                </li>
-                <li class="fl-header-menu__nav-list-item">
-                    <a class="fl-header-menu__nav-list-item-head" href="/blog">Insights</a>
-                </li>
-                <li class="fl-header-menu__nav-list-item">
-                    <a class="fl-header-menu__nav-list-item-head" href="/contact">Contact</a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="fl-header-actions" style="display: flex; align-items: center; gap: 20px;">
-            <a href="/search" class="fl-header-search-btn" aria-label="Search"><i class="fa fa-search" aria-hidden="true"></i></a>
-            @guest
-                <a href="/login" class="fl-button primary" style="background: var(--fl-primary); color: white; padding: 10px 20px; border-radius: 4px; font-weight: 700;">Portal Login</a>
-            @else
-                <a href="/dashboard" class="fl-button primary" style="background: var(--fl-primary); color: white; padding: 10px 20px; border-radius: 4px; font-weight: 700;">Dashboard</a>
-            @endguest
+    <div class="fl-header__upper">
+        <div class="fl-container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Professional CPA & Legal Advisory Services</span>
+                <div style="display: flex; gap: 20px;">
+                    <a href="/faq">FAQs</a>
+                    <a href="/contact">Client Support</a>
+                    <a href="/en-es">EN/ES</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fl-header__main">
+        <div class="fl-container">
+            <div class="fl-header-flex">
+                <a class="fl-logo" href="/" aria-label="Home">
+                    <img src="{{ $siteSettings['logo'] ?? asset('logo.png') }}" alt="{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}">
+                </a>
+                
+                <nav class="fl-nav">
+                    <ul class="fl-nav-main">
+                        <li><a class="fl-nav-link" href="/services">Services <i class="fa fa-angle-down"></i></a></li>
+                        <li><a class="fl-nav-link" href="/team">Our Experts <i class="fa fa-angle-down"></i></a></li>
+                        <li><a class="fl-nav-link" href="/insights">Insights</a></li>
+                        <li><a class="fl-nav-link" href="/contact">Contact</a></li>
+                        @guest
+                            <li><a href="/login" class="fl-btn-cta">Client Portal</a></li>
+                        @else
+                            <li><a href="/dashboard" class="fl-btn-cta">My Case</a></li>
+                        @endguest
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 </header>
@@ -77,42 +81,56 @@
     @yield('content')
 </main>
 
-<footer class="fl-footer" style="background: var(--fl-navy); color: white; padding: 80px 0 40px; margin-top: 80px;">
+<footer class="fl-footer">
     <div class="fl-container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-            <div>
-                <img src="{{ $siteSettings['logo'] ?? asset('logo_white.png') }}" alt="Logo" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);">
-                <p style="opacity: 0.7; line-height: 1.8;">{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }} provides world-class legal and tax advisory services for individuals and businesses.</p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Our Services</h4>
-                <ul style="list-style: none; opacity: 0.7; line-height: 2.5;">
-                    <li><a href="/services/tax">Tax Planning & Litigation</a></li>
-                    <li><a href="/services/real-estate">Real Estate Acquisition</a></li>
-                    <li><a href="/services/estate">Estate & Trust Management</a></li>
-                    <li><a href="/services/audit">Internal Audit & Compliance</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Quick Links</h4>
-                <ul style="list-style: none; opacity: 0.7; line-height: 2.5;">
-                    <li><a href="/privacy">Privacy Policy</a></li>
-                    <li><a href="/terms">Terms of Service</a></li>
-                    <li><a href="/accessibility">Accessibility</a></li>
-                    <li><a href="/contact">Book a Consultation</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 25px; font-size: 1.2rem;">Connect With Us</h4>
-                <div style="display: flex; gap: 20px; font-size: 1.5rem; margin-top: 10px;">
+        <div class="fl-footer-grid">
+            <div class="fl-footer-col">
+                <img src="{{ $siteSettings['logo'] ?? asset('logo_white.png') }}" alt="Logo" style="height: 45px; margin-bottom: 25px; filter: brightness(0) invert(1);">
+                <p style="color: rgba(255,255,255,0.7); line-height: 1.8; font-size: 15px;">
+                    {{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }} is a leading professional services firm providing expert tax planning, audit, and legal advisory services.
+                </p>
+                <div class="fl-social-icons" style="margin-top: 25px;">
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+            <div class="fl-footer-col">
+                <h4>Legal Services</h4>
+                <ul class="fl-footer-links">
+                    <li><a href="/services/tax">Tax Planning</a></li>
+                    <li><a href="/services/real-estate">Real Estate Law</a></li>
+                    <li><a href="/services/estate">Estate Planning</a></li>
+                    <li><a href="/services/audit">Corporate Audit</a></li>
+                </ul>
+            </div>
+            <div class="fl-footer-col">
+                <h4>Firm Information</h4>
+                <ul class="fl-footer-links">
+                    <li><a href="/about">About Our Firm</a></li>
+                    <li><a href="/team">Meet the Experts</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                    <li><a href="/contact">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="fl-footer-col">
+                <h4>Resources</h4>
+                <ul class="fl-footer-links">
+                    <li><a href="/blog">Legal Blog</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Use</a></li>
+                    <li><a href="/accessibility">Accessibility</a></li>
+                </ul>
+            </div>
         </div>
-        <div style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.5; font-size: 0.85rem;">
-            &copy; {{ date('Y') }} {{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}. All rights reserved.
+        
+        <div class="fl-footer-bottom">
+            <div>&copy; {{ date('Y') }} {{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}. All rights reserved.</div>
+            <div style="display: flex; gap: 20px;">
+                <a href="/sitemap">Sitemap</a>
+                <span>findyoursolutions.com</span>
+            </div>
         </div>
     </div>
 </footer>

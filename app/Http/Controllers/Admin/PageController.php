@@ -33,7 +33,24 @@ class PageController extends Controller
 
     public function edit(Page $page)
     {
-        $page->load('blocks');
         return view('admin.pages.edit', compact('page'));
+    }
+
+    public function update(Request $request, Page $page)
+    {
+        $page->update($request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:pages,slug,' . $page->id,
+            'meta_title' => 'nullable',
+            'meta_description' => 'nullable',
+        ]));
+
+        return redirect()->route('admin.pages.index')->with('success', 'Page updated successfully.');
+    }
+
+    public function destroy(Page $page)
+    {
+        $page->delete();
+        return redirect()->route('admin.pages.index')->with('success', 'Page deleted.');
     }
 }

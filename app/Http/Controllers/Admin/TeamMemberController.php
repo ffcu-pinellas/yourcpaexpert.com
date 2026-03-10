@@ -25,9 +25,35 @@ class TeamMemberController extends Controller
             'name' => 'required',
             'title' => 'required',
             'bio' => 'nullable',
-            'is_partner' => 'boolean',
+            'is_partner' => 'required|boolean',
+            'order' => 'integer',
         ]));
 
-        return redirect()->route('admin.team.index');
+        return redirect()->route('admin.team.index')->with('success', 'Team member added.');
+    }
+
+    public function edit(TeamMember $team)
+    {
+        $member = $team;
+        return view('admin.team.create', compact('member'));
+    }
+
+    public function update(Request $request, TeamMember $team)
+    {
+        $team->update($request->validate([
+            'name' => 'required',
+            'title' => 'required',
+            'bio' => 'nullable',
+            'is_partner' => 'required|boolean',
+            'order' => 'integer',
+        ]));
+
+        return redirect()->route('admin.team.index')->with('success', 'Team member updated.');
+    }
+
+    public function destroy(TeamMember $team)
+    {
+        $team->delete();
+        return redirect()->route('admin.team.index')->with('success', 'Member removed.');
     }
 }

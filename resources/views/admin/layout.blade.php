@@ -54,8 +54,23 @@
                 </div>
                 <div class="nav-item">
                     <a href="{{ route('admin.settings.index') }}" class="nav-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
-                        <i class="fas fa-cog"></i> Settings
+                        <i class="fas fa-cog"></i> General Settings
                     </a>
+                </div>
+                
+                <div style="margin: 20px 0 10px 15px; font-size: 0.75rem; color: #888; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">FindLaw Controls</div>
+                <div class="nav-item">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                        <i class="fas fa-magic"></i> Homepage Theme
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <form action="{{ route('admin.seed') }}" method="POST" style="padding: 0 15px;">
+                        @csrf
+                        <button type="submit" style="background: none; border: none; color: #fff; opacity: 0.8; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 0;">
+                            <i class="fas fa-database"></i> Re-Seed FindLaw
+                        </button>
+                    </form>
                 </div>
             </nav>
         </aside>
