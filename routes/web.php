@@ -10,6 +10,17 @@ use App\Http\Controllers\Admin\TwoFactorController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/sync-data', function() {
+    try {
+        Artisan::call('db:seed', ['--class' => 'FindLawSeeder', '--force' => true]);
+        return "System Synchronized Successfully! <a href='/'>Go Home</a>";
+    } catch (\Exception $e) {
+        return "Sync failed: " . $e->getMessage();
+    }
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
