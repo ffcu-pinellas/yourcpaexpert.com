@@ -22,4 +22,21 @@ class DashboardController extends Controller
         
         return view('admin.dashboard', compact('stats'));
     }
+
+    /**
+     * Run the FindLaw seeder from the browser (for terminal-less hosting).
+     */
+    public function seed()
+    {
+        try {
+            \Illuminate\Support\Facades\Artisan::call('db:seed', [
+                '--class' => 'FindLawSeeder',
+                '--force' => true
+            ]);
+            
+            return back()->with('success', 'Professional content initialized successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error initializing content: ' . $e->getMessage());
+        }
+    }
 }

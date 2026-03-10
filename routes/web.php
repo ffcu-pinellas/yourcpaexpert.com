@@ -47,6 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     
     Route::middleware('app.admin_2fa')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/seed', [DashboardController::class, 'seed'])->name('seed');
         Route::resource('pages', PageController::class);
         Route::resource('team', TeamMemberController::class);
         Route::resource('cases', \App\Http\Controllers\Admin\JobCaseController::class);
