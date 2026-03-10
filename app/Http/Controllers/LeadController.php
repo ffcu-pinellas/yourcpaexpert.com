@@ -34,7 +34,11 @@ class LeadController extends Controller
                 'need' => $validated['need']
             ]
         ]);
-
         return response()->json(['message' => 'Thank you! We will contact you shortly.']);
+    }
+
+    public function show(Lead $lead)
+    {
+        return response()->json($lead);
     }
 }

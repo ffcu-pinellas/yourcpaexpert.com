@@ -3,6 +3,7 @@
 @section('content')
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
     <h2>Payment Methods</h2>
+    <a href="{{ route('admin.payments.create') }}" class="btn btn-primary">+ Add New Method</a>
 </div>
 
 <div class="card">

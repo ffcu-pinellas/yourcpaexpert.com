@@ -14,6 +14,26 @@ class PaymentMethodController extends Controller
         return view('admin.payments.index', compact('methods'));
     }
 
+    public function create()
+    {
+        return view('admin.payments.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'identifier' => 'required|unique:payment_methods',
+            'instructions' => 'required',
+            'is_active' => 'boolean',
+            'order' => 'integer',
+        ]);
+
+        PaymentMethod::create($validated);
+
+        return redirect()->route('admin.payments.index')->with('success', 'Payment method created.');
+    }
+
     public function edit(PaymentMethod $payment)
     {
         return view('admin.payments.edit', compact('payment'));
@@ -25,7 +45,7 @@ class PaymentMethodController extends Controller
             'name' => 'required',
             'instructions' => 'required',
             'is_active' => 'boolean',
-            'config' => 'nullable|array',
+            'order' => 'integer',
         ]);
 
         $payment->update($validated);

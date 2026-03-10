@@ -35,4 +35,10 @@ class JobCaseController extends Controller
 
         return redirect()->route('admin.cases.index')->with('success', 'Case created successfully.');
     }
+
+    public function show(JobCase $case)
+    {
+        $case->load('user', 'documents');
+        return view('admin.cases.show', compact('case'));
+    }
 }

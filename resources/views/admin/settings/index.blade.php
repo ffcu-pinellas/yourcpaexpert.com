@@ -1,59 +1,50 @@
 @extends('admin.layout')
 
 @section('content')
-<div class="card">
-    <form action="#" method="POST" enctype="multipart/form-data">
+<div style="margin-bottom: 30px;">
+    <h2>System Settings</h2>
+    <p style="color: #666;">Global portal configuration and branding.</p>
+</div>
+
+<div class="card" style="max-width: 900px;">
+    <form action="{{ route('admin.settings.update') }}" method="POST">
         @csrf
-        
-        <div style="margin-bottom: 30px;">
-            <h3>Branding</h3>
-            <div style="margin-top: 15px;">
-                <label style="display: block; margin-bottom: 5px;">Firm Name</label>
-                <input type="text" name="site_name" value="{{ $settings['branding']['site_name']->value ?? 'Your CPA Expert' }}" style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px;">
-            </div>
-            <div style="margin-top: 15px;">
-                <label style="display: block; margin-bottom: 5px;">Logo</label>
-                <input type="file" name="site_logo">
-            </div>
-        </div>
-
-        <div style="margin-bottom: 30px;">
-            <h3>Contact Information</h3>
-            <div style="margin-top: 15px;">
-                <label style="display: block; margin-bottom: 5px;">Phone</label>
-                <input type="text" name="contact_phone" value="{{ $settings['contact']['contact_phone']->value ?? '' }}" style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px;">
-            </div>
-            <div style="margin-top: 15px;">
-                <label style="display: block; margin-bottom: 5px;">Email</label>
-                <input type="email" name="contact_email" value="{{ $settings['contact']['contact_email']->value ?? '' }}" style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px;">
-            </div>
-        </div>
-
-        <div style="margin-bottom: 30px;">
-            <h3>Global Styling</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div style="margin-top: 15px;">
-                    <label style="display: block; margin-bottom: 5px;">Primary Color</label>
-                    <input type="color" name="primary_color" value="{{ $settings['theme']['primary_color']->value ?? '#1a237e' }}" style="width: 100%; height: 40px; padding: 5px; border: 1px solid var(--border-color); border-radius: 4px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div>
+                <h3 style="margin-bottom: 15px; color: #002244;">General Info</h3>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Firm Name</label>
+                    <input type="text" name="firm_name" value="{{ $siteSettings['firm_name'] ?? 'Your CPA Expert' }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
                 </div>
-                <div style="margin-top: 15px;">
-                    <label style="display: block; margin-bottom: 5px;">Secondary Color</label>
-                    <input type="color" name="secondary_color" value="{{ $settings['theme']['secondary_color']->value ?? '#303f9f' }}" style="width: 100%; height: 40px; padding: 5px; border: 1px solid var(--border-color); border-radius: 4px;">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Firm Tagline</label>
+                    <input type="text" name="firm_tagline" value="{{ $siteSettings['firm_tagline'] ?? '' }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Contact Email</label>
+                    <input type="email" name="contact_email" value="{{ $siteSettings['contact_email'] ?? '' }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+            </div>
+
+            <div>
+                <h3 style="margin-bottom: 15px; color: #002244;">Branding & Colors</h3>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Primary Color (FindLaw Orange: #FA6400)</label>
+                    <input type="color" name="primary_color" value="{{ $siteSettings['primary_color'] ?? '#FA6400' }}" style="width: 100%; height: 40px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px;">Secondary Color (FindLaw Navy: #002244)</label>
+                    <input type="color" name="secondary_color" value="{{ $siteSettings['secondary_color'] ?? '#002244' }}" style="width: 100%; height: 40px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-top: 25px; padding: 15px; background: #e3f2fd; border-radius: 4px; font-size: 0.85rem;">
+                    <i class="fas fa-info-circle"></i> These colors are applied globally to the header, buttons, and high-fidelity blocks.
                 </div>
             </div>
         </div>
 
-        <div style="margin-bottom: 30px;">
-            <h3>External Integrations</h3>
-            <div style="margin-top: 15px;">
-                <label style="display: block; margin-bottom: 5px;">Tawk.to Site ID (Free Chat)</label>
-                <input type="text" name="chat_site_id" value="{{ $settings['integrations']['chat_site_id']->value ?? '' }}" placeholder="e.g. 642.../1... " style="width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px;">
-                <small style="color: #666;">Get your free ID at <a href="https://tawk.to" target="_blank">tawk.to</a></small>
-            </div>
-        </div>
-
-        <div style="text-align: right;">
-            <button type="submit" class="btn btn-primary">Save All Settings</button>
+        <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; text-align: right;">
+            <button type="submit" class="btn btn-primary" style="padding: 12px 30px;">Save All Portal Settings</button>
         </div>
     </form>
 </div>

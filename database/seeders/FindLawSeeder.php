@@ -61,13 +61,15 @@ class FindLawSeeder extends Seeder
         $pages = [
             [
                 'title' => 'Tax Planning & Litigation',
-                'slug' => 'services/tax',
+                'slug' => 'tax',
+                'is_published' => true,
                 'meta_title' => 'Expert Tax Planning & Litigation Services | Your CPA Expert',
                 'meta_description' => 'Navigate complex tax laws with our expert JD/CPA team.',
             ],
             [
                 'title' => 'Real Estate Acquisition',
-                'slug' => 'services/real-estate',
+                'slug' => 'real-estate',
+                'is_published' => true,
                 'meta_title' => 'Strategic Real Estate Legal Counsel',
                 'meta_description' => 'From commercial closings to 1031 exchanges, we protect your property interests.',
             ],
@@ -116,15 +118,16 @@ class FindLawSeeder extends Seeder
 
         // 5. Additional Practice Area Pages
         $morePages = [
-            ['title' => 'Estate Planning', 'slug' => 'services/estate'],
-            ['title' => 'Corporate Audit', 'slug' => 'services/audit'],
-            ['title' => 'Business Law', 'slug' => 'services/business'],
-            ['title' => 'Asset Protection', 'slug' => 'services/asset-protection'],
+            ['title' => 'Estate Planning', 'slug' => 'estate'],
+            ['title' => 'Corporate Audit', 'slug' => 'audit'],
+            ['title' => 'Business Law', 'slug' => 'business'],
+            ['title' => 'Asset Protection', 'slug' => 'asset-protection'],
         ];
 
         foreach ($morePages as $mp) {
             $p = Page::updateOrCreate(['slug' => $mp['slug']], [
                 'title' => $mp['title'],
+                'is_published' => true,
                 'meta_title' => $mp['title'] . ' Services',
                 'meta_description' => 'Professional ' . $mp['title'] . ' guidance.',
             ]);
@@ -133,6 +136,18 @@ class FindLawSeeder extends Seeder
                 'content' => ['title' => $p->title, 'subtitle' => 'Expert advice for your ' . strtolower($p->title) . ' needs.'],
                 'order_column' => 1
             ]);
+        }
+
+        // 6. Payment Methods
+        $payments = [
+            ['name' => 'CashApp', 'identifier' => 'cashapp', 'instructions' => 'Send payment to $YourCPAExpert. Include invoice # in the note.', 'is_active' => true, 'order' => 1],
+            ['name' => 'Zelle', 'identifier' => 'zelle', 'instructions' => 'Send payment to pay@yourcpaexpert.com.', 'is_active' => true, 'order' => 2],
+            ['name' => 'Bank Wire', 'identifier' => 'wire', 'instructions' => 'Account: 12345678, Routing: 987654321. Bank: Chase Manhattan.', 'is_active' => true, 'order' => 3],
+            ['name' => 'Stripe / Credit Card', 'identifier' => 'stripe', 'instructions' => 'Online payment link will be provided in your dashboard.', 'is_active' => false, 'order' => 4],
+        ];
+
+        foreach ($payments as $pay) {
+            \App\Models\PaymentMethod::updateOrCreate(['identifier' => $pay['identifier']], $pay);
         }
     }
 }

@@ -30,7 +30,7 @@
                     <span style="text-transform: uppercase; font-size: 0.75rem; font-weight: bold; color: var(--primary-color);">{{ $case->status }}</span>
                 </td>
                 <td style="padding: 12px; text-align: right;">
-                    <a href="#" class="btn" style="padding: 5px 10px; border: 1px solid var(--border-color); font-size: 0.8rem;">Review Documents</a>
+                    <a href="{{ route('admin.cases.show', $case) }}" class="btn" style="padding: 5px 10px; border: 1px solid var(--border-color); font-size: 0.8rem; background: #f8f9fa;">View Details</a>
                 </td>
             </tr>
             @endforeach

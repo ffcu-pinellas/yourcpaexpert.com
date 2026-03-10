@@ -128,8 +128,10 @@ a {
     padding: 120px 0;
     background-size: cover;
     background-position: center;
+    background-image: url('https://www.findlaw.com/static/c/images/images/w_1200,c_limit,dpr_auto/f_auto,q_auto:eco/v1753177840/ability-law/wp-prod/www-Group-162-1-2/www-Group-162-1-2.jpg?_i=AA');
     color: #fff;
     overflow: hidden;
+    text-align: center;
 }
 
 .fl-banner::before {
@@ -143,9 +145,11 @@ a {
     z-index: 1;
 }
 
-text-align: center;
-position: relative;
-z-index: 2;
+.fl-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: 0 auto;
 }
 
 .fl-banner__content {
