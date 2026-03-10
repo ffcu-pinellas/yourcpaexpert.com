@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $services = Page::where('is_published', true)->get();
+        $query = Page::where('is_published', true);
+
+        if ($request->has('q')) {
+            $query->where('title', 'like', '%' . $request->q . '%')
+                  ->orWhere('meta_description', 'like', '%' . $request->q . '%');
+        }
+
+        $services = $query->get();
         return view('services.index', compact('services'));
     }
 
