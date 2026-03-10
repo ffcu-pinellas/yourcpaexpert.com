@@ -1,65 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="padding: 40px 0;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
-        <h1>Welcome, {{ auth()->user()->name }}</h1>
-        <div>
-            <a href="/contact" class="btn btn-primary">New Inquiry</a>
-        </div>
+<div class="fl-container" style="padding: 60px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+        <h1 style="color: #002D5B; font-family: 'Outfit', sans-serif; font-size: 2.5rem;">Welcome back, {{ auth()->user()->name }}</h1>
+        <a href="/contact" class="fl-btn-primary">New Expert Inquiry <i class="fas fa-plus"></i></a>
     </div>
 
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+    <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 40px;">
         <!-- Active Cases -->
         <div>
-            <h2 style="margin-bottom: 20px;">Your Active Cases</h2>
+            <h2 style="margin-bottom: 25px; color: #002D5B; font-size: 1.5rem;">Your Secure Active Cases</h2>
             @forelse($cases as $case)
-                <div class="card" style="margin-bottom: 20px; padding: 25px; border-left: 4px solid var(--primary-color);">
+                <div class="card" style="margin-bottom: 30px; padding: 35px; border-left: 5px solid #FA6400; background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-radius: 4px;">
                     <div style="display: flex; justify-content: space-between; align-items: start;">
                         <div>
-                            <h3>{{ $case->title }}</h3>
-                            <p style="color: var(--muted-text); font-size: 0.9rem;">Type: {{ $case->type }} | Status: <span style="text-transform: uppercase; font-weight: bold; color: var(--primary-color);">{{ $case->status }}</span></p>
+                            <h3 style="color: #002D5B; margin-bottom: 10px;">{{ $case->title }}</h3>
+                            <p style="color: #666; font-size: 0.95rem;">Type: <strong>{{ $case->type }}</strong> | Status: <span style="text-transform: uppercase; font-weight: 800; color: #FA6400; letter-spacing: 0.5px;">{{ $case->status }}</span></p>
                         </div>
-                        <a href="#" class="btn" style="border: 1px solid var(--border-color);">View Details</a>
+                        <a href="#" class="btn" style="border: 2px solid #eee; padding: 8px 15px; font-weight: 700; color: #002D5B; border-radius: 4px;">Case Details</a>
                     </div>
                     
-                    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color);">
-                        <h4 style="font-size: 0.9rem; margin-bottom: 10px;">Case Documents: {{ $case->documents->count() }}</h4>
-                        <div style="display: flex; gap: 10px;">
+                    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;">
+                        <h4 style="font-size: 0.9rem; margin-bottom: 15px; color: #333; text-transform: uppercase; font-weight: 700;">Secure Documents ({{ $case->documents->count() }})</h4>
+                        <div style="display: flex; gap: 15px;">
                             <form action="{{ route('documents.upload') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="job_case_id" value="{{ $case->id }}">
                                 <input type="file" name="files[]" multiple onchange="this.form.submit()" style="display: none;" id="upload-{{ $case->id }}">
-                                <label for="upload-{{ $case->id }}" class="btn" style="font-size: 0.8rem; background: var(--light-bg); cursor: pointer;">
-                                    <i class="fas fa-upload"></i> Upload Document
+                                <label for="upload-{{ $case->id }}" class="fl-btn-primary" style="font-size: 0.85rem; padding: 10px 20px; background: #f4f6f8; color: #002D5B; box-shadow: none;">
+                                    <i class="fas fa-cloud-upload-alt"></i> Upload Secure Document
                                 </label>
                             </form>
                         </div>
                     </div>
                 </div>
             @empty
-                <div class="card" style="text-align: center; padding: 50px; color: #999;">
-                    <i class="fas fa-folder-open fa-3x" style="margin-bottom: 20px;"></i>
-                    <p>No active cases found. Need help with Real Estate or Tax? Contact us today.</p>
+                <div class="card" style="text-align: center; padding: 80px; color: #999; background: #fff; border: 1px dashed #ccc; border-radius: 8px;">
+                    <i class="fas fa-folder-open fa-4x" style="margin-bottom: 25px; opacity: 0.3;"></i>
+                    <p style="font-size: 1.1rem;">No active cases. Need professional representation?</p>
+                    <a href="/services" style="color: #FA6400; font-weight: 700; margin-top: 15px; display: block;">Browse Legal Services &rarr;</a>
                 </div>
             @endforelse
         </div>
 
         <!-- Sidebar / Recent Documents -->
         <div>
-            <h2 style="margin-bottom: 20px;">Recent Uploads</h2>
-            <div class="card" style="padding: 20px;">
+            <h2 style="margin-bottom: 25px; color: #002D5B; font-size: 1.5rem;">Recent Portal Activity</h2>
+            <div class="card" style="padding: 30px; background: #fff; border: 1px solid #eee; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
                 @forelse($recentDocuments as $doc)
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color);">
-                        <div style="color: var(--primary-color);"><i class="fas fa-file-alt fa-2x"></i></div>
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f9f9f9;">
+                        <div style="color: #FA6400;"><i class="fas fa-file-pdf fa-2x"></i></div>
                         <div style="flex: 1; overflow: hidden;">
-                            <div style="font-weight: 600; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{ $doc->original_name }}</div>
-                            <div style="font-size: 0.75rem; color: #999;">{{ $doc->created_at->diffForHumans() }} | {{ strtoupper($doc->status) }}</div>
+                            <div style="font-weight: 700; color: #002D5B; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{ $doc->original_name }}</div>
+                            <div style="font-size: 0.8rem; color: #888;">{{ $doc->created_at->diffForHumans() }} | <span style="color: #2e7d32;">SECURE</span></div>
                         </div>
-                        <a href="{{ route('documents.download', $doc) }}" style="color: var(--muted-text);"><i class="fas fa-download"></i></a>
+                        <a href="{{ route('documents.download', $doc) }}" style="color: #999; transition: color 0.2s;"><i class="fas fa-download"></i></a>
                     </div>
                 @empty
-                    <p style="color: #999; font-size: 0.9rem; text-align: center;">No documents uploaded yet.</p>
+                    <p style="color: #999; font-size: 1rem; text-align: center; padding: 40px 0;">Your secure uploads will appear here.</p>
                 @endforelse
             </div>
         </div>

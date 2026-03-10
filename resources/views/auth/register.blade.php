@@ -44,9 +44,9 @@
 
 <style>
 .auth-page {
-    padding: 80px 0;
+    padding: 100px 0;
     background: #f4f6f8;
-    min-height: 80vh;
+    min-height: calc(100vh - 400px);
     display: flex;
     align-items: center;
 }
@@ -54,29 +54,30 @@
     max-width: 450px;
     margin: 0 auto;
     background: white;
-    padding: 40px;
+    padding: 50px;
     border-radius: 4px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.08);
 }
 .auth-title {
     font-family: 'Outfit', sans-serif;
     color: #002D5B;
-    font-size: 28px;
+    font-size: 32px;
+    font-weight: 800;
     margin-bottom: 10px;
 }
 .auth-subtitle {
     color: #666;
-    margin-bottom: 30px;
-    font-size: 15px;
+    margin-bottom: 35px;
+    font-size: 16px;
 }
 .auth-footer {
-    margin-top: 30px;
+    margin-top: 35px;
     text-align: center;
     border-top: 1px solid #eee;
-    padding-top: 20px;
-    font-size: 14px;
+    padding-top: 25px;
+    font-size: 15px;
 }
-.full-width { width: 100%; height: 50px; }
+.auth-footer a { color: #FA6400; font-weight: 700; }
 .error { color: #e74c3c; font-size: 13px; margin-top: 5px; display: block; }
 </style>
 @endsection

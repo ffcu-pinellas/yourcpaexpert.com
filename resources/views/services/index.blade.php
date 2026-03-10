@@ -1,33 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="hero" style="padding: 60px 0; background: var(--bg-color); color: var(--text-color); border-bottom: 1px solid var(--border-color);">
-    <div class="container">
-        <h1>Our Practice Areas</h1>
-        <p style="color: var(--muted-text);">Comprehensive legal and tax solutions tailored to your unique needs.</p>
+<section class="fl-banner" style="background-image: url('{{ asset('images/findlaw_banner_hero.png') }}'); padding: 80px 0; min-height: 300px;">
+    <div class="fl-banner__content">
+        <h1 class="fl-banner__text-main">Our Practice Areas</h1>
+        <p class="fl-banner__text-secondary">Comprehensive legal and tax solutions tailored to your unique needs.</p>
     </div>
 </section>
 
-<section style="padding: 80px 0;">
-    <div class="container">
-        <div class="services-grid">
+<section class="fl-section-padding">
+    <div class="fl-container">
+        <div class="topic-box-grid">
             @forelse($services as $service)
-                <div class="service-card">
-                    <h3>{{ $service->title }}</h3>
-                    <p style="font-size: 0.9rem; color: var(--muted-text); margin: 15px 0;">{{ $service->meta_description }}</p>
-                    <a href="{{ route('services.show', $service->slug) }}" class="btn" style="padding: 8px 0; color: var(--primary-color);">Explore Service &rarr;</a>
-                </div>
+                <a href="{{ route('services.show', $service->slug) }}" class="fl-topic-box-item">
+                    <div style="flex: 1;">
+                        <h3 class="fl-topic-box-item-text">{{ $service->title }}</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">{{ $service->meta_description }}</p>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: #FA6400;"></i>
+                </a>
             @empty
-                <div class="service-card" style="grid-column: 1 / -1; text-align: center;">
-                    <h3>Tax Planning</h3>
-                    <p>Strategic tax reduction and planning.</p>
-                    <a href="/services/tax-planning" class="btn">Learn More</a>
-                </div>
-                <div class="service-card" style="text-align: center;">
-                    <h3>Real Estate Law</h3>
-                    <p>Closings, 1031 exchanges, and litigation.</p>
-                    <a href="/services/real-estate" class="btn">Learn More</a>
-                </div>
+                <a href="/services/tax" class="fl-topic-box-item">
+                    <div style="flex: 1;">
+                        <h3 class="fl-topic-box-item-text">Tax Planning & Litigation</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Strategic tax reduction and professional IRS representation.</p>
+                    </div>
+                </a>
+                <a href="/services/real-estate" class="fl-topic-box-item">
+                    <div style="flex: 1;">
+                        <h3 class="fl-topic-box-item-text">Real Estate Acquisition</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Protecting your property interests in complex transactions.</p>
+                    </div>
+                </a>
             @endforelse
         </div>
     </div>
