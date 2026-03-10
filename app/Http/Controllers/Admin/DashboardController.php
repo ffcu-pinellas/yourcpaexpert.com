@@ -27,17 +27,23 @@ class DashboardController extends Controller
     /**
      * Run the FindLaw seeder from the browser (for terminal-less hosting).
      */
-    public function seed()
+    public function findlawPortal()
     {
+        return view('admin.findlaw.portal');
+    }
+
+    public function syncFindlaw(Request $request)
+    {
+        // This is where we'd put logic to "re-apply" the Findlaw structure
+        // For now, we'll re-run the seeder but with a specific flag or just redirect with success
         try {
             \Illuminate\Support\Facades\Artisan::call('db:seed', [
                 '--class' => 'FindLawSeeder',
                 '--force' => true
             ]);
-            
-            return back()->with('success', 'Professional content initialized successfully!');
+            return back()->with('success', 'FindLaw Design System Synchronized!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Error initializing content: ' . $e->getMessage());
+            return back()->with('error', 'Sync Failed: ' . $e->getMessage());
         }
     }
 }

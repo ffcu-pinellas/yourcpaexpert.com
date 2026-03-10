@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@extends('layouts.app')
 
 @section('content')
 <main id="main-content" class="ability-corporate flw-general-main-content">
@@ -89,5 +88,4 @@
         </div>
     </div>
 </main>
-@endsection
 @endsection

@@ -55,7 +55,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('app.admin_2fa')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/seed', [DashboardController::class, 'seed'])->name('seed');
-        Route::resource('pages', PageController::class);
+        Route::get('/findlaw-portal', [DashboardController::class, 'findlawPortal'])->name('findlaw-portal');
+    Route::post('/findlaw-portal/sync', [DashboardController::class, 'syncFindlaw'])->name('findlaw-portal.sync');
+    Route::resource('pages', PageController::class);
         Route::resource('team', TeamMemberController::class);
         Route::resource('cases', \App\Http\Controllers\Admin\JobCaseController::class);
         Route::resource('payments', \App\Http\Controllers\Admin\PaymentMethodController::class);

@@ -44,17 +44,23 @@
 
         <div class="card" style="background: #fff; border: 1px solid #eee; padding: 25px; border-radius: 8px;">
             <h3 style="color: #002244; margin-bottom: 15px;">Firm Control Center</h3>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Use these terminal-free tools to manage your Hostinger deployment.</p>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Use these terminal-free tools to manage your Hostinger deployment and FindLaw synchronization.</p>
             
-            <form action="{{ route('admin.seed') }}" method="POST" onsubmit="return confirm('CRITICAL ACTION: This will overwrite or initialize firm data to match the FindLaw High-Fidelity template. Proceed?')">
-                @csrf
-                <button type="submit" style="width: 100%; background: #FA6400; color: #fff; border: none; padding: 18px; border-radius: 6px; font-weight: 800; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 5px 15px rgba(250, 100, 0, 0.3);">
-                    <i class="fas fa-magic"></i> INITIALIZE FINDLAW SYSTEM
-                </button>
-            </form>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <a href="{{ route('admin.findlaw-portal') }}" style="width: 100%; background: #002244; color: #fff; border: none; padding: 18px; border-radius: 6px; font-weight: 800; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 5px 15px rgba(0, 34, 68, 0.2); text-decoration: none;">
+                    <i class="fas fa-cubes"></i> OPEN FINDLAW PORTAL
+                </a>
+
+                <form action="{{ route('admin.findlaw-portal.sync') }}" method="POST" onsubmit="return confirm('CRITICAL ACTION: This will overwrite or initialize firm data to match the FindLaw High-Fidelity template. Proceed?')">
+                    @csrf
+                    <button type="submit" style="width: 100%; background: #FA6400; color: #fff; border: none; padding: 18px; border-radius: 6px; font-weight: 800; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 5px 15px rgba(250, 100, 0, 0.3);">
+                        <i class="fas fa-magic"></i> SYNC DESIGN SYSTEM
+                    </button>
+                </form>
+            </div>
             
             <div style="margin-top: 20px; padding: 15px; background: #fdfae6; border-radius: 4px; border-left: 4px solid #fac400; font-size: 0.85rem; color: #856404;">
-                <i class="fas fa-info-circle"></i> This action populates your homepage, team, and legal service pages with pixel-perfect content.
+                <i class="fas fa-info-circle"></i> Use the **FindLaw Portal** to manage practice areas and structural components specifically.
             </div>
         </div>
     </div>
