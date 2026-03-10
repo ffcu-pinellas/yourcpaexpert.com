@@ -38,15 +38,15 @@
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@@context": "https://schema.org",
+      "@@type": "LocalBusiness",
       "name": "Your CPA Expert",
       "image": "{{ asset('images/logo.png') }}",
-      "@id": "https://yourcpaexpert.com",
+      "@@id": "https://yourcpaexpert.com",
       "url": "https://yourcpaexpert.com",
       "telephone": "+1000000000",
       "address": {
-        "@type": "PostalAddress",
+        "@@type": "PostalAddress",
         "streetAddress": "Main St",
         "addressLocality": "Your City",
         "postalCode": "00000",
