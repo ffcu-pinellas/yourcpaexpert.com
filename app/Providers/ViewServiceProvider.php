@@ -22,7 +22,11 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['layouts.app', 'admin.layout'], function ($view) {
-            $settings = SiteSetting::all()->pluck('value', 'key');
+            try {
+                $settings = SiteSetting::all()->pluck('value', 'key');
+            } catch (\Exception $e) {
+                $settings = collect();
+            }
             $view->with('siteSettings', $settings);
         });
     }
